@@ -1,5 +1,7 @@
 <script lang="ts">
 
+import "../app.css";
+
 import { FirebaseApp } from 'sveltefire'
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
@@ -22,14 +24,14 @@ export const auth = getAuth(app);
 </script>
 
 <FirebaseApp { auth } { firestore }>
-    <nav>
-        <a href="/">HomePage</a>
+    <nav class="border-b-2 border-black">
+        <a href="/">Home</a>
         <a href="/Faq">Faq</a>
     </nav>
 
     <slot />
     
-    <footer>
-
+    <footer class="fixed flex bottom-0">
+      <p>most gangster footer</p>
     </footer>
 </FirebaseApp>
