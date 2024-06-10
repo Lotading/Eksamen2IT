@@ -5,6 +5,20 @@ import "../app.css";
 import { FirebaseApp } from 'sveltefire'
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+
+import {
+    GoogleAuthProvider,
+    signInWithPopup,
+    signOut
+} from 'firebase/auth'
+
+import {
+    getFirebaseContext,
+    userStore,
+    SignedIn,
+    SignedOut
+} from 'sveltefire'
+
 import { getFirestore } from "firebase/firestore";
 
 const config = {
@@ -21,17 +35,33 @@ const app = initializeApp(config);
 export const firestore = getFirestore(app);
 export const auth = getAuth(app);
 
+async function signInWithGoogle (auth: Auth) {
+  const provider = new GoogleAuthProvider()
+  provider.addScope('profile')
+  provider.addScope('email')
+  await signInWithPopup(auth, provider)
+}
 </script>
 
-<FirebaseApp { auth } { firestore }>
-    <nav class="border-b-2 border-black">
-        <a href="/">Home</a>
-        <a href="/Faq">Faq</a>
+<FirebaseApp {auth} {firestore}>
+    <nav class="relative w-full border-b-2 border-black flex flex-row justify-between items-center p-4">
+      <div class="flex space-x-4">
+        <a href="/" class="hover:underline text-2xl">Home</a>
+        <a href="/Faq" class="hover:underline text-2xl">Faq</a>
+      </div>
+      <div>
+        <SignedOut>
+          <button on:click={() => signInWithGoogle(auth)} class="hover:underline">Login</button>
+        </SignedOut>
+        <SignedIn let:user>
+          <button on:click={() => signOut(auth)} class="hover:underline">Sign out ({user.displayName})</button>
+        </SignedIn>
+      </div>
     </nav>
 
     <slot />
     
-    <footer class="fixed flex bottom-0">
+    <footer class="absolute bottom-0 w-full text-center p-4 h-auto">
       <p>most gangster footer</p>
     </footer>
 </FirebaseApp>
