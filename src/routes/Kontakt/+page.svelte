@@ -1,22 +1,19 @@
 <script>
-
   let data = {
     problem: "",
     email: "",
-  }
-  
+  };
 
   import { firestore } from "$lib/firebase";
   import { addDoc } from "firebase/firestore";
   import { collection } from "firebase/firestore";
 
   const sendData = () => {
-    addDoc(collection(firestore,'faq'), data)
-    alert('Hei, takk for at du tar konakt, vi skal se paa det!')
+    addDoc(collection(firestore, "faq"), data);
+    alert("Hei, takk for at du tar konakt, vi skal se paa det!");
     data.email = "";
     data.problem = "";
-  }
-
+  };
 </script>
 
 <div>
