@@ -63,7 +63,7 @@ async function signInWithGoogle (auth: Auth) {
 
     <slot />
     
-    <footer class="absolute bottom-0 w-full text-center p-4 h-auto">
-      <p>most gangster footer</p>
+    <footer class="fixed border-t-2 border-black bottom-0 w-full text-center p-4 h-auto">
+      <p>All rights reserved [blank]&copy;</p>
     </footer>
 </FirebaseApp>
