@@ -1,5 +1,7 @@
 <script lang="ts">
 
+import type { Auth } from 'firebase/auth'
+
 import "../app.css";
 
 import { FirebaseApp } from 'sveltefire'
@@ -13,8 +15,8 @@ import {
 } from 'firebase/auth'
 
 import {
-    getFirebaseContext,
-    userStore,
+//    getFirebaseContext,
+//    userStore,
     SignedIn,
     SignedOut
 } from 'sveltefire'
