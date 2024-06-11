@@ -23,7 +23,7 @@
   <input
     type="text"
     placeholder="problem123"
-    class="border-black border-2"
+    class="border-black border-2 text-black"
     bind:value={data.problem}
     required
   />
@@ -31,11 +31,11 @@
     type="email"
     id="emailKontakt"
     placeholder="john@doe.com"
-    class="border-black border-2"
+    class="border-black border-2 text-black"
     bind:value={data.email}
     required
   />
-  <button type="submit" class="border-black border-2" on:click={sendData}
+  <button type="submit" class="border-black border-2 bg-white text-black hover:bg-slate-300" on:click={sendData}
     >Send inn</button
   >
 </div>

@@ -25,24 +25,32 @@
 
 <FirebaseApp {auth} {firestore}>
   <nav
-    class="relative w-full border-b-2 border-white flex flex-row justify-between items-center p-4"
+    class="relative w-full border-b-2 border-white flex flex-row justify-between bg-slate-950 items-center p-4"
   >
     <div class="flex space-x-4">
       <a href="/" class="hover:underline text-2xl">Home</a>
       <a href="/Faq" class="hover:underline text-2xl">Faq</a>
       <a href="/Kontakt" class="hover:underline text-2xl">Kontakt</a>
       <a href="/Vaskehall" class="hover:underline text-2xl">Vaskehallen</a>
+      <a href="/Shop" class="hover:underline text-2xl">Produkter</a>
     </div>
-    <div>
+    <div >
+      <!-- svelte-ignore a11y-missing-attribute -->
       <SignedOut>
-        <button on:click={() => signInWithGoogle(auth)} class="hover:underline"
-          >Login</button
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <!-- svelte-ignore a11y-no-static-element-interactions -->
+        <a type="button" on:click={() => signInWithGoogle(auth)} class="hover:underline text-2xl"
+          >Login</a
         >
       </SignedOut>
+      <!-- svelte-ignore a11y-no-static-element-interactions -->
       <SignedIn let:user>
-        <button on:click={() => signOut(auth)} class="hover:underline"
-          >Sign out ({user.displayName})</button
+        <!-- svelte-ignore a11y-missing-attribute -->
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <a type="button" on:click={() => signOut(auth)} class="hover:underline text-2xl"
+          >Sign out ({user.displayName}) |</a
         >
+        <a href="/Admin" class="hover:underline text-2xl mx-1">Admin</a>
       </SignedIn>
     </div>
   </nav>
